@@ -29,7 +29,7 @@ if login == 'EXIT_APP' or password == 'EXIT_APP':
     import sys
     print('\n\nFinished...')
     os.system(f'rm -f {sys.argv[0].replace("dl.py", "")}vk_config.v2.json')
-    os.system(f'rm -f {sys.argv[0].replace("dl.py", "")}__pycache__')
+    os.system(f'rm -rf {sys.argv[0].replace("dl.py", "")}__pycache__')
 
     quit()
 
@@ -49,7 +49,7 @@ else:
         import sys
         print('\n\nFinished...')
         os.system(f'rm -f {sys.argv[0].replace("dl.py", "")}vk_config.v2.json')
-        os.system(f'rm -f {sys.argv[0].replace("dl.py", "")}__pycache__')
+        os.system(f'rm -rf {sys.argv[0].replace("dl.py", "")}__pycache__')
 
 
         quit()
@@ -61,6 +61,12 @@ try:
     vk_session.auth()
 except:
     print('\033[1mAUTH FAILED : \033[0m Incorrect login or password')
+
+    import sys
+
+    os.system(f'rm -f {sys.argv[0].replace("dl.py", "")}vk_config.v2.json')
+    os.system(f'rm -rf {sys.argv[0].replace("dl.py", "")}__pycache__')
+
     quit()
 
 vk = vk_session.get_api()
@@ -103,4 +109,4 @@ for track in vkaudio.get_iter():
 import sys
 print('\n\nFinished...')
 os.system(f'rm -f {sys.argv[0].replace("dl.py", "")}vk_config.v2.json')
-os.system(f'rm -f {sys.argv[0].replace("dl.py", "")}__pycache__')
+os.system(f'rm -rf {sys.argv[0].replace("dl.py", "")}__pycache__')
