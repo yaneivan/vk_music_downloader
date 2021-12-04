@@ -1,4 +1,5 @@
 def find_and_get(search):
+	search = search.replace("'", '')
 	try:
 		from pytube import YouTube
 		from youtube_search import YoutubeSearch
@@ -13,10 +14,7 @@ def find_and_get(search):
 
 	results = YoutubeSearch(search, max_results = 3).to_json()
 	results = json.loads(results)
-	try:
-		link = 'youtube.com' + results['videos'][0]['url_suffix']
-	except:
-		print(search)
+	link = 'youtube.com' + results['videos'][0]['url_suffix']
 	yt = YouTube(link)
 
 	stream = yt.streams.filter(only_audio=True)
@@ -31,11 +29,14 @@ def find_and_get(search):
 			extan = extan[6:]
 			name = str(yt.title) +' (' + search +').'+ extan
 			name = name.replace('"', '')
-			name = name.replace("'", '')
 			name = name.replace('/', '')
 			name = name.replace('!', '')
 			name = name.replace('?', '')
 			name = name.replace('|', '')
 			name = name.replace('\\', '')
+			name = name.replace(':', '')
 			#print(search)
-			i.download(output_path ='music', filename = name)
+			try:
+				i.download(output_path ='music', filename = name)
+			except:
+				print(name)
