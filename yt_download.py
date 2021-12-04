@@ -14,10 +14,19 @@ def find_and_get(search):
 
 	results = YoutubeSearch(search, max_results = 3).to_json()
 	results = json.loads(results)
-	link = 'youtube.com' + results['videos'][0]['url_suffix']
+	try:
+		link = 'youtube.com' + results['videos'][0]['url_suffix']
+	except:
+		print('Error while searching videos', search)
+		return
 	yt = YouTube(link)
 
-	stream = yt.streams.filter(only_audio=True)
+	try:
+		stream = yt.streams.filter(only_audio=True)
+	except:
+		print('Error while getting stream ', search)
+		return
+
 
 	arr = []
 	for i in stream:
