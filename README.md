@@ -1,0 +1,1 @@
+This is a small script I made in November of 2021 to download all my songs from VKontakte to my computer. The script connected to my VK profile and iterated through songs list. Then it searched song title and author on YouTube and downloaded it from there. There was some troubles with finding the right song, but in the end I used this script to get a lot of songs.
